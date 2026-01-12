@@ -63,22 +63,27 @@ void circuleBA(int numTrain)
 
 int main()
 {
-  const int nbr = 9;
+  const int nbrA = 5;
+  const int nbrB = 20;
   std::srand(std::time(nullptr));
-  std::thread trainsAB[nbr];
-  std::thread trainsBA[nbr];
+  std::thread trainsAB[nbrA];
+  std::thread trainsBA[nbrB];
 
   // INITALISE TRAINS ET CONTROLEUR
-  for (int i = 1; i < nbr; i++)
+  for (int i = 1; i < nbrA; i++)
   {
     trainsAB[i] = std::thread(circuleAB, i);
+  }
+  for( int i = 1; i < nbrB; i++){
     trainsBA[i] = std::thread(circuleBA, -i);
   }
   // JOIN DES THREADS
-  for (int i = 1; i < nbr; i++)
+  for (int i = 1; i < nbrA; i++)
   {
     if (trainsAB[i].joinable())
       trainsAB[i].join();
+  }
+  for( int i = 1; i < nbrB; i++){
     if (trainsBA[i].joinable())
       trainsBA[i].join();
   }
