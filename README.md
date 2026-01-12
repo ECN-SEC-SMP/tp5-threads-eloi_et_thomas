@@ -1,4 +1,4 @@
-﻿# TP5 - TP treahds
+﻿# TP5 - TP Threads
 
 SEC 2
 
