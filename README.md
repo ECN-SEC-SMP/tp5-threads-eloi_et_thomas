@@ -26,4 +26,3 @@ make
 ```bash
 ./build_and_execute.sh
 ```
-
