@@ -30,7 +30,7 @@ public:
   {
     if (val == 0 || sens == 0)
     {
-      val = 1;
+      val++;
       sens = 0;
       return true;
     }
@@ -41,7 +41,7 @@ public:
   {
     if (val == 0 || sens == 1)
     {
-      val = 1;
+      val++;
       sens = 1;
       return true;
     }
@@ -50,18 +50,18 @@ public:
 
   bool controloutEnB(int numero)
   {
-    val = 0;
+    val--;
     return true;
   }
 
   bool controloutEnA(int numero)
   {
-    val = 0;
+    val--;
     return true;
   }
 
 private:
-  bool val;
+  int val;
   bool sens;
 };
 
