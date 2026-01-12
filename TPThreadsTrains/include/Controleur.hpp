@@ -28,26 +28,41 @@ public:
 
   bool controlinEnB(int numero)
   {
-    return true;
+    if (val == 0 || sens == 0)
+    {
+      val = 1;
+      sens = 0;
+      return true;
+    }
+    return false;
   }
 
   bool controlinEnA(int numero)
   {
-    return true;
+    if (val == 0 || sens == 1)
+    {
+      val = 1;
+      sens = 1;
+      return true;
+    }
+    return false;
   }
 
   bool controloutEnB(int numero)
   {
+    val = 0;
     return true;
   }
 
   bool controloutEnA(int numero)
   {
+    val = 0;
     return true;
   }
 
 private:
-  int val;
+  bool val;
+  bool sens;
 };
 
 #endif // CONTROLEUR_HPP
