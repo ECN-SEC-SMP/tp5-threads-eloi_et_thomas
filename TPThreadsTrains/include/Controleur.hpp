@@ -28,7 +28,7 @@ public:
 
   bool controlinEnB(int numero)
   {
-    if (val == 0 || sens == 0)
+    if (val == 0 || (sens == 0 && val < 2))
     {
       val++;
       sens = 0;
@@ -39,7 +39,7 @@ public:
 
   bool controlinEnA(int numero)
   {
-    if (val == 0 || sens == 1)
+    if (val == 0 || (sens == 1 && val < 2))
     {
       val++;
       sens = 1;
