@@ -15,13 +15,17 @@
 
 int ressourcePartagee;
 
+Semaphore mySemaphore(1); // Sémaphore pour la ressource partagée
+
 void lecteur(int numLecteur)
 {
   for (int i = 0; i < 4; i++)
   {
     std::cout << "Lecteur n° " << numLecteur << " en cours " << endl;
     this_thread::sleep_for(chrono::milliseconds(rand() % 20000));
+    mySemaphore.P(numLecteur); // Demande d'accès à la ressource
     std::cout << "        Valeur lue = " << ressourcePartagee << "  " << endl;
+    mySemaphore.V(numLecteur); // Libération de la ressource
   }
 }
 
@@ -31,10 +35,12 @@ void ecrivain(int numEcrivain)
   for (int i = 0; i < 4; i++)
   {
     std::cout << "Ecrivain n° " << numEcrivain << " en cours " << endl;
+    mySemaphore.P(numEcrivain); // Demande d'accès à la ressource
     x = ressourcePartagee;
     this_thread::sleep_for(chrono::milliseconds(rand() % 20000));
     std::cout << "valeur à incrémenter de la ressourcePartagee = " << x << "  " << endl;
     ressourcePartagee = x + 1;
+    mySemaphore.V(numEcrivain); // Libération de la ressource
   }
 }
 
