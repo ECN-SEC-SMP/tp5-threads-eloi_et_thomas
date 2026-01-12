@@ -28,9 +28,11 @@ public:
 
   bool controlinEnB(int numero)
   {
-    if (val == 0 || (sens == 0 && val < 2))
+    if ((val == 0 || (sens == 0 && val < 2)) && nbTrainsB < 3)
     {
+      nbTrainsA = 0;
       val++;
+      nbTrainsB++;
       sens = 0;
       return true;
     }
@@ -39,9 +41,11 @@ public:
 
   bool controlinEnA(int numero)
   {
-    if (val == 0 || (sens == 1 && val < 2))
+    if ((val == 0 || (sens == 1 && val < 2)) && nbTrainsA < 3)
     {
+      nbTrainsB = 0;
       val++;
+      nbTrainsA++;
       sens = 1;
       return true;
     }
@@ -63,6 +67,8 @@ public:
 private:
   int val;
   bool sens;
+  int nbTrainsA = 0;
+  int nbTrainsB = 0;
 };
 
 #endif // CONTROLEUR_HPP
